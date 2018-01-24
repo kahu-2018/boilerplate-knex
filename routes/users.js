@@ -14,5 +14,20 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/profiles/:id', (req, res) => {
+  // var db = req.app.get('db')
+  var userId = req.params.id
+  console.log("hello")
+  db.getProfile(userId)
+    .then(data => {
+    res.render('profile', {data})
+    })
+    .catch(function (err) {
+    res.send('Something went wrong!')
+    console.error(err)
+    })
+
+})
+
 module.exports = router
 
