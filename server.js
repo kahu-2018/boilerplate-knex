@@ -6,6 +6,9 @@ const userRoutes = require('./routes/users')
 
 const server = express()
 
+const config = require('./knexfile').development
+const devDb = require('knex')(config)
+
 // Middleware
 
 server.engine('hbs', hbs({extname: 'hbs'}))
